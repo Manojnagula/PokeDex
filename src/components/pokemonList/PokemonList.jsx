@@ -37,4 +37,5 @@ console.log(pokemonPromises);
   }, []);
 }
 
+
 export default PokemonList;
