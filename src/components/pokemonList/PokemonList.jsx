@@ -22,11 +22,9 @@ function PokemonList() {
     });
 
     const pokemonListData = await axios.all(pokemonPromises);
-    console.log(pokemonListData);
 
     const pokemonFinalList = pokemonListData.map((pokemonData) => {
       const pokemon = pokemonData.data;
-      console.log(pokemon);
       return {
         id: pokemon.id,
         name: pokemon.name,
@@ -50,7 +48,7 @@ function PokemonList() {
       {/* Here iterating through updated pokemonList array */}
       <div className="pokemon-list">
       {pokemonList.map((pokemon) => (
-        <Pokemon name={pokemon.name} key={pokemon.id} url={pokemon.image} />
+        <Pokemon name={pokemon.name} key={pokemon.id} url={pokemon.image} id={pokemon.id}/>
       ))}
       </div>
       <div className="page-controls">
