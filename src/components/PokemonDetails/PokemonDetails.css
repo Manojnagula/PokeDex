@@ -28,3 +28,11 @@ display: inline;
 .pokedex-redirect{
     text-align: center;
 }
+.link{
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: white;
+}
