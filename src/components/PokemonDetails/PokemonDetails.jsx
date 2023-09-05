@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./pokemonDetails.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 function PokemonDetails() {
@@ -24,22 +24,35 @@ function PokemonDetails() {
     downloadPokemons();
   });
   return (
- pokemon &&  <div>
-      <div>{pokemon.name}</div>
+    <>
+    <h1 className='pokedex-redirect'>
+      <Link  to="/">POKEDEX</Link>
+    </h1>
+    {pokemon && 
+    <div className="pokemonDetailsWrapper">
+      <div className="pokemonName">{pokemon.name}</div>
       <div>
-        <img src={pokemon.image} alt="pokemon-image" />
+        <img
+          className="pokemon-image"
+          src={pokemon.image}
+          alt="pokemon-image"
+        />
       </div>
-      <div>
-        Weight: {pokemon.weight}
-        Height: {pokemon.height}
+      <div className="pokemon-attribute">
+        <div>Weight: {pokemon.weight}</div>
+        <div>Height: {pokemon.height}</div>
       </div>
-      <div>
-        Type: 
+      <div className="pokemon-types">
+        <h1>Type:</h1>
         {pokemon.types.map((t) => (
-          <span key={t.type.name}>{t.type.name}</span>
+          <span className="type" key={t.type.name}>
+            {t.type.name}
+          </span>
         ))}
       </div>
     </div>
+    }
+  </>
   );
 }
 export default PokemonDetails;
