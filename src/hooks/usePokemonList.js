@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import downloadPokemons from "../Utils/downloadPokemons";
 
 function usePokemonList(){
     
@@ -13,42 +14,9 @@ function usePokemonList(){
       prevUrl: DEAFAULT_URL,
     });
   
-    async function downloadPokemons() {
-      const response = await axios.get(
-        pokemonListState.pokeDexUrl ? pokemonListState.pokeDexUrl : DEAFAULT_URL
-      );
-      const pokemonResults = response.data.results;
-  
-  
-      const pokemonPromises = pokemonResults.map((pokemon) => {
-        return axios.get(pokemon.url);
-      });
-  
-      const pokemonListData = await axios.all(pokemonPromises);
-  
-      const pokemonFinalList = pokemonListData.map((pokemonData) => {
-        const pokemon = pokemonData.data;
-        return {
-          id: pokemon.id,
-          name: pokemon.name,
-          image: pokemon.sprites.other.dream_world.front_default,
-          types: pokemon.types,
-        };
-      });
-      //upto here just grabbing data from api and storing it
-  
-      //updating pokemon list array values with the objects we got from pokemon final list.
-      // setPokemonList(pokemonFinalList);
-  
-      setPokemonListState((state) => ({
-        ...state,
-        pokemonList: pokemonFinalList,
-        nextUrl: response.data.next,
-        prevUrl: response.data.previous,
-      }));
-    }
+    
     useEffect(() => {
-      downloadPokemons();
+      downloadPokemons(pokemonListState,setPokemonListState,DEAFAULT_URL);
     }, [pokemonListState.pokeDexUrl]);
 
     return [pokemonListState,setPokemonListState]
