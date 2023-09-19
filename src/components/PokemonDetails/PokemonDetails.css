@@ -22,6 +22,10 @@ gap: 2rem;
     background-color: azure;
     margin-left: 1rem;
 }
+.image-container{
+    display: flex;
+    justify-content: center;
+}
 .pokemon-types > h1{
 display: inline;
 }
@@ -35,4 +39,17 @@ display: inline;
     border-radius: 10px;
     padding: 10px 20px;
     background-color: white;
+}
+.similar-pokemons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+
+}
+.pokemon-similar-boxes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
 }

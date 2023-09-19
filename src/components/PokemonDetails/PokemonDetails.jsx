@@ -15,7 +15,7 @@ function PokemonDetails() {
       {pokemon && (
         <div className="pokemonDetailsWrapper">
           <div className="pokemonName">{pokemon.name}</div>
-          <div>
+          <div className="image-container">
             <img
               className="pokemon-image"
               src={pokemon.image}
