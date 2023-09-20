@@ -1,6 +1,8 @@
 import "./Search.css";
 
-function Search() {
-  return <input id="search-pokemon" type="text" placeholder="Just name a pokemon..." />;
+function Search({ updateSearchTerm }) {
+  return <input id="search-pokemon" type="text"
+   placeholder="Just name a pokemon..." 
+   onChange={(e) => updateSearchTerm(e.target.value)} />
 }
 export default Search;

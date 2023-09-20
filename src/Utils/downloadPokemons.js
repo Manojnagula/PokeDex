@@ -1,7 +1,6 @@
 import axios from "axios";
 
 async function downloadPokemons(pokemonListState, setPokemonListState, defaultUrl, limit = 20) {
-    console.log(pokemonListState.pokeDexUrl,defaultUrl)
     const response = await axios.get(
         pokemonListState.pokeDexUrl ? pokemonListState.pokeDexUrl : defaultUrl);
     let pokemonResults = response.data.results? response.data.results : response.data.pokemon; //array of pokemons
@@ -17,7 +16,6 @@ async function downloadPokemons(pokemonListState, setPokemonListState, defaultUr
     });
 
     const pokemonListData = await axios.all(pokemonPromises);
-    console.log(pokemonListData)
     const pokemonFinalList = pokemonListData.map((pokemonData) => {
         const pokemon = pokemonData.data;
         return {
